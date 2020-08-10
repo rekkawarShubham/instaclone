@@ -7,7 +7,11 @@ class Photowall extends Component{
     return <div>
         <Link className="addIcon" to="/AddPhoto"/>
     <div className="photoGrid">  
-        {this.props.posts.map((post ,index) => <Photo key={index} post={post} onRemovePhoto={this.props.onRemovePhoto} />)}
+        {this.props.posts
+        .sort(function(x,y){
+          return y.id - x.id
+        })
+        .map((post ,index) => <Photo key={index} post={post} onRemovePhoto={this.props.onRemovePhoto} />)}
     </div>
     </div>
    }
